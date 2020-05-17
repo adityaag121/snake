@@ -1,0 +1,134 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face{
+	font-family: "digital";
+	src: url('fonts/Digital7-1e1Z.ttf')
+}
+
+@media(max-width: 37.5em){
+	html{
+		font-size: 80%;
+	}
+}
+
+body{
+	background-image: url(images/background.jpg);
+	background-size: cover;
+	text-align: center;
+}
+
+.canvascontainer{
+	position: relative;
+	max-width: 80vh;
+}
+
+.gamebox{
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#canvas{
+	max-width: 100%;
+}
+
+.scoreboard{
+	background-color: rgba(0,0,0,.7);
+	width: fit-content;
+	font-family: 'digital',monospace;
+	letter-spacing: .1rem;
+	font-size: 3rem;
+	font-weight: 400;
+	color: white;
+	padding: 0 1rem;
+	border-radius: 0 0 10px 10px;
+}
+
+.controls{
+	margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+	width: 80vh;
+	max-width: 100%;
+	position: relative;
+}
+
+.btn{
+	background-color: rgb(255, 105, 180);
+	color: white;
+	border: none;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: 1.1rem;
+	transition: all .3s;
+	margin: 0 1rem;
+	text-transform: uppercase;
+}
+
+.btn--speed{
+	border-radius: 100rem;
+	padding: .2rem .8rem;
+}
+
+.btn--autonomous{
+	padding: .4rem;
+	border-radius: 3px;
+	font-size: .9rem;
+	text-transform: none;
+}
+
+.btn--pause{
+	height: 1.8rem;
+	width: 1.8rem;
+	border-radius: 2px;
+	padding: .1rem;
+}
+
+.btn:hover{
+	background-image: linear-gradient(120deg, rgb(255, 105, 180)  50%,rgb(161, 67, 114) 50%  );
+	background-size: 200%;
+	background-position: center;
+}
+
+.btn:active{
+	background-position: right;
+}
+
+.btn:focus{
+	outline: none;
+}
+
+
+.btn--mode{
+	display: block;
+	width: 100%;
+	margin: 1rem;
+	border-radius: 0;
+	padding: .5rem 1rem;
+}
+
+.modeselect{
+	position: absolute;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	background-image: linear-gradient(to right bottom, rgba(255, 105, 180, .5) ,rgba(161, 67, 114, .5) );
+	transition: all .2s;
+}
+
+.modeselect__text{
+	color: white;
+	font-family: digital;
+	font-size: 2rem;
+	margin: 1rem;
+	letter-spacing: 2px;
+}

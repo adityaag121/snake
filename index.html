@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.css">
+	<title>Snake</title>
+</head>
+<body>
+	<div class="gamebox">
+		<div class="scoreboard">Score: <span id="score"></span></div>
+
+		<div class="canvascontainer">
+			<canvas id="canvas" width="4200px" height="4200px"></canvas>
+
+			<div class="modeselect">
+				<div class="modeselect__text">Choose Your Game Mode:</div>
+	
+				<div id="classic" class="btn btn--mode">Classic</div>
+				<div id="endless" class="btn btn--mode">Endless</div>
+			</div>
+		</div>
+
+		<div class="controls">
+			<button id="autonomous" class="btn btn--autonomous">AutoPlay: OFF</button>
+			<button id="speedup" class="btn btn--speed"><b>&uarr;</b> speed up</button>
+			<button id="speeddown" class="btn btn--speed">speed down <b>&darr;</b></button>
+			<button id="pause" class="btn btn--pause"><i id="pausebtn" class="fa fa-pause"></i></button>
+		</div>
+	</div>
+	
+	<script src="script.js"></script>
+</body>
+</html>
