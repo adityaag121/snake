@@ -158,12 +158,12 @@ function unmoveSnake(){
 	state.snake.shift()
 	state.snake.push(removedtail)
 
-	/*if(state.snake.length>1){
+	if(state.snake.length>1){
 		if(state.snake[0].x-state.snake[1].x==1)state.moves[0]=right
 		else if(state.snake[0].x-state.snake[1].x==-1)state.moves[0]=left
 		else if(state.snake[0].y-state.snake[1].y==-1)state.moves[0]=up
 		else if(state.snake[0].y-state.snake[1].y==1)state.moves[0]=down
-	}*/
+	}
 }
 
 function didCollide(){
@@ -246,7 +246,7 @@ function run(){
 	if(level>0){
 		if(state.snake.length>10){
 			running=false
-			reqid=window.requestAnimationFrame(popup(level<5?"Level completed":"You Win!",0,.1,9))
+			reqid=window.requestAnimationFrame(popup(level<5?"Level completed":"!!You Win!!",0,.1,9))
 	
 			canvas.addEventListener('click',function func(){
 				if(level<5){
@@ -305,6 +305,7 @@ function moveTouch(e){
 
 
 function endTouch(e){
+	if(!locked)return
 	let dx = e.changedTouches[0].clientX - swipe.x
 	let dy = e.changedTouches[0].clientY - swipe.y
 	if(Math.abs(dx)>=Math.abs(dy)){
@@ -320,6 +321,7 @@ function endTouch(e){
 		}
 	}
 
+	locked=false
 	canvas.removeEventListener('touchmove',moveTouch)
 	canvas.removeEventListener('touchend',endTouch)
 }
@@ -375,13 +377,14 @@ const start = () => {
 
 window.requestAnimationFrame(step(0))
 
-var triedtoeatY=up,triedtoeatX=right,triedtoeatX2,triedtoeatY2
+var triedtoeatY,triedtoeatX
 
 function autonomous(triedmove){
 	if(state.moves.length==0)state.moves.push(right)
 	if(didCollide()){
 		unmoveSnake()
 		let move=state.moves[0]
+
 		if(move.x==0){
 			state.moves.push(triedmove==right?left:right)
 			moveSnake()
@@ -402,9 +405,7 @@ function autonomous(triedmove){
 		}
 	}
 	else{
-		triedtoeatX2=triedtoeatX
-		triedtoeatY2=triedtoeatY
-		if(state.snake[0].x==state.apple.x&&state.moves[state.moves.length-1].y==0)state.moves.push(triedtoeatY=triedtoeatY2==(triedtoeatY==up?down:up)?triedtoeatY:(triedtoeatY==up?down:up))
-		else if(state.snake[0].y==state.apple.y&&state.moves[state.moves.length-1].x==0) state.moves.push(triedtoeatX=triedtoeatX2==(triedtoeatX==right?left:right)?triedtoeatX:(triedtoeatX==right?left:right))
+		if(state.snake[0].x==state.apple.x&&state.moves[state.moves.length-1].y==0)state.moves.push(triedtoeatY=triedtoeatY==up?down:up)
+		else if(state.snake[0].y==state.apple.y&&state.moves[state.moves.length-1].x==0)state.moves.push(triedtoeatX=triedtoeatX==right?left:right)
 	}
 }
