@@ -362,10 +362,10 @@ function endTouch(e){
 	canvas.removeEventListener('touchend',endTouch)
 }
 
-var speed=100
+var speed=250
 
 const step = t1 => t2 => {
-	if(t2 - t1 > 15000/speed){
+	if(t2 - t1 > 25000/speed){
 		if(running&&!state.pause)run()
 		window.requestAnimationFrame(step(t2))
 	}
@@ -375,11 +375,11 @@ const step = t1 => t2 => {
 }
 
 document.getElementById("speedup").addEventListener("click",function(){
-	if(speed<500)speed += 25
+	if(speed<500)speed += 50
 	audio_click.play()
 })
 document.getElementById("speeddown").addEventListener("click",function(){
-	if(speed>25)speed -= 25
+	if(speed>50)speed -= 50
 	audio_click.play()
 })
 document.getElementById("pause").addEventListener("click",pause)
